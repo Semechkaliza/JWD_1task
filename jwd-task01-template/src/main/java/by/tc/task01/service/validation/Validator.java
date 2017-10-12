@@ -20,7 +20,9 @@ public class Validator {
 					try {
 						double a = Double.parseDouble(partValue(part));
 						return false;
-					}catch (NumberFormatException e){}
+					}catch (NumberFormatException e){
+						e.printStackTrace();
+					}
 				}
 			}
 		}
