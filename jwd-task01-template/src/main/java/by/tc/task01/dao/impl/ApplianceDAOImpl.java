@@ -12,7 +12,16 @@ import java.util.Map;
 
 public class ApplianceDAOImpl implements ApplianceDAO{
 	private static String fileName = "src/main/resources/appliances_db.txt";
+	private <E> boolean includedParams(Criteria<E> criteria,String str){
+		str=str.toUpperCase();
 
+		for (Map.Entry<E,Object> b : criteria.getSet()) {
+			String a = b.toString().toUpperCase();
+			if (!str.contains(a.toString())) return false;
+		}
+		if(!str.contains(criteria.getType().toUpperCase()))	return false;
+		return true;
+	}
 	@Override
 	public <E> Appliance find(Criteria<E> criteria) {
 		Appliance appliance = null;
@@ -23,10 +32,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 				while ((s = in.readLine()) != null) {
 					if(includedParams(criteria,s))
 						appliance = ApplianceBuild.buildAppliance(s);
-
 				}
-
-
 			} finally {
 				in.close();
 			}
@@ -34,16 +40,5 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 			System.out.println(e.getMessage());
 		}
 		return appliance;
-	}
-
-	private <E> boolean includedParams(Criteria<E> criteria,String str){
-		str=str.toUpperCase();
-
-		for (Map.Entry<E,Object> b : criteria.getSet()) {
-			String a = b.toString().toUpperCase();
-			if (!str.contains(a.toString())) return false;
-		}
-		if(!str.contains(criteria.getType().toUpperCase()))	return false;
-		return true;
 	}
 }

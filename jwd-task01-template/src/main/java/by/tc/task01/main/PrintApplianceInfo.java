@@ -8,12 +8,7 @@ public class PrintApplianceInfo {
         try {
             System.out.println(appliance.toString());
         } catch (NullPointerException npException) {
-            System.out.println("fignya");
-            {
-            }
-
-            // you may add your own code here
-
+            System.out.println(0);
         }
     }
 }

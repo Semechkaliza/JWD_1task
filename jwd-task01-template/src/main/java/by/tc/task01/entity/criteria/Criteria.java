@@ -7,8 +7,9 @@ import java.util.Set;
 public class Criteria<E> {
 
 	private Map<E, Object> criteria = new HashMap<E, Object>();
-
-
+    private String concatType(String fullType){
+        return fullType.substring(fullType.indexOf("$")+1,fullType.length());
+    }
 	public void add(E searchCriteria, Object value) {
 		criteria.put(searchCriteria, value);
 	}
@@ -20,10 +21,4 @@ public class Criteria<E> {
 		String s = criteria.keySet().iterator().next().getClass().toString();
 		return concatType(s);
 	}
-
-	private String concatType(String fullType){
-		return fullType.substring(fullType.indexOf("$")+1,fullType.length());
-	}
-	// you may add your own code here
-
 }

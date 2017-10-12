@@ -18,7 +18,7 @@ public class Main {
 		//////////////////////////////////////////////////////////////////
 
 		Criteria<Oven> criteriaOven = new Criteria<Oven>();
-		criteriaOven.add(Oven.CAPACITY, 32);
+		criteriaOven.add(Oven.CAPACITY, "32");
 
 		appliance = service.find(criteriaOven);
 
@@ -38,7 +38,7 @@ public class Main {
 		
 		Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>();
 		criteriaTabletPC.add(TabletPC.COLOR, "Blue");
-		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
+		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, "33");
 		criteriaTabletPC.add(TabletPC.MEMORY_ROM, 8000);
 
 		appliance = service.find(criteriaTabletPC);
